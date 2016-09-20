@@ -33,3 +33,6 @@ My plan is to add in some extra features described below and eventually get my g
 * Add life powerup.
 * Save functionality.
 * CHANGE THE COLOUR SCHEME!!!
+* Add app icons.
+* Come up with a better name :)
+* Everything else I haven't thought of yet.
