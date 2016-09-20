@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Awesome Game</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_welcome_screen">Awesome Game</string>
+
+    <string name="button_play">Play Game</string>
+    <string name="button_game_over">Game Over!</string>
+</resources>
