@@ -1,4 +1,4 @@
-package com.example.kjcj1.ballgame;
+package com.example.ritural.ballgame;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,9 @@ public class WelcomeScreen extends ActionBarActivity {
     private String playerScoreMessage = "9000";
     private SeekBar seekBar;
     private int difficultyValue = 0;
+    private final static String HIGH_SCORE = "Highscore: ";
+
+    //**************************************************************************************************
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class WelcomeScreen extends ActionBarActivity {
             if(Integer.parseInt(playerScoreMessage) > oldHighScore)
             {
                 editor.putInt("key", Integer.parseInt(playerScoreMessage));
-                editor.commit();
+                editor.apply();
             }
             else
             {
@@ -82,16 +85,20 @@ public class WelcomeScreen extends ActionBarActivity {
 
         if(playerScoreTextView != null)
         {
-            if(Integer.parseInt(playerScoreMessage) > oldHighScore)
+            int playerScore = Integer.parseInt(playerScoreMessage);
+
+            if(playerScore > oldHighScore)
             {
-                playerScoreTextView.setText("Highscore: " + playerScoreMessage);
+                playerScoreTextView.setText(HIGH_SCORE + playerScore);
             }
             else
             {
-                playerScoreTextView.setText("Highscore: " + oldHighScore);
+                playerScoreTextView.setText(HIGH_SCORE + oldHighScore);
             }
         }
     }
+
+    //**************************************************************************************************
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +106,8 @@ public class WelcomeScreen extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_welcome_screen, menu);
         return true;
     }
+
+    //**************************************************************************************************
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -113,6 +122,8 @@ public class WelcomeScreen extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //**************************************************************************************************
 
     public void gameStart(View view)
     {

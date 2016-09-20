@@ -1,4 +1,4 @@
-package com.example.kjcj1.ballgame;
+package com.example.ritural.ballgame;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

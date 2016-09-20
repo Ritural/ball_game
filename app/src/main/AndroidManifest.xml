@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kjcj1.ballgame" >
+    package="com.example.ritural.ballgame" >
 
     <application
         android:allowBackup="true"
@@ -8,12 +8,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.kjcj1.ballgame.MainActivity"
+            android:name="com.example.ritural.ballgame.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.example.kjcj1.ballgame.WelcomeScreen"
+            android:name="com.example.ritural.ballgame.WelcomeScreen"
             android:label="@string/title_activity_welcome_screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

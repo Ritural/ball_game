@@ -1,4 +1,4 @@
-package com.example.kjcj1.ballgame;
+package com.example.ritural.ballgame;
 
 import android.content.Intent;
 import android.content.Context;
@@ -23,7 +23,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     //Global variable to send back playerScore to welcomeScreen
     public final static String EXTRA_MESSAGE = "9000";
-    private float globalDrawNum = 0;
 
     //PLAYER VARIABLES
     private float playerSpeed = 5; //DEFAULT is 7
@@ -32,7 +31,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
     private int playerScore = 0;
     private final int MAX_HEALTH = 25; //DEFAULT is 25
     private final float PLAYER_SIZE =  50;
-    private final int PLAYER_START_X = 50;
     Player player; //DECLARES THE NEW PLAYER
 
     //MINE STUFF / OTHER BALL STUFF
@@ -147,7 +145,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        //We don't use this...
+        //We don't use this...yet...
     }
 
 //**************************************************************************************************
@@ -181,8 +179,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                 player.myY = PLAYER_SIZE;
             }
 
-
-
             //Log.e("POWER UP", "Timer: " + powerUpTimer);
             if(drawNum >= (powerUpTimer + POWERUP_SPAWN_TIME) && powerUpCount == 0)
             {
@@ -213,7 +209,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             drawAll(canvas, paint);
 
             ++drawNum;
-            globalDrawNum = drawNum;
+            //globalDrawNum = drawNum;
             // Queue a redrawing operation
             invalidate();
         }
@@ -355,7 +351,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         {
             player.deltaY = MAX_SPEED;
         }
-
+        //Reversing the players direction on the y axis, changing rectangle colour, speeding up the player, and spawning mines.
         if (player.myY + player.mySize >= screenHeight)
         {
             player.deltaY *= -1;
@@ -377,11 +373,8 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     private class PowerUp extends Parent
     {
-
         private float deltaX;
         private int[] mineColourCount;
-
-        //deltaY
 
         public PowerUp()
         {
@@ -392,11 +385,9 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             this.mySize = 50; //TODO Make this a constant up the top
             number = r;
             this.myColor.setColor(returnColor(number));
-
+            //TODO Spawn at a random location on the screen, different deltas (directions) etc
             this.deltaX = 7;
             this.deltaY = 2;
-
-            //mineColourCount = new int[4];
         }
 
         public void Move()
@@ -498,7 +489,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     private boolean powerUpActivity()
     {
-        //TODO
         if(player.myX - player.mySize >= powerUp.myX - powerUp.mySize *2 &&
                 player.myX + player.mySize <= powerUp.myX + powerUp.mySize *2 &&
                 player.myY - player.mySize >= powerUp.myY - powerUp.mySize *2 &&
@@ -535,7 +525,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             }
             else
             {
-
                 chainScore = 0;
                 scoreList.add(new ScoringText(powerUp.myX, powerUp.myY, chainScore));
                 player.playerHP -= 2;
@@ -593,11 +582,9 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             for(int i = 0; i < MINES_TO_SPAWN; i++)
             {
                 float x = SPAWN_AREA / 2 + (randy.nextInt((int)(screenWidth - SPAWN_AREA)));
-
                 float y = 350 + (randy.nextInt((int)(screenHeight)));
 
                 //Log.e("SPAWN MINES", "Y pos: " + y);
-
                 //canvas.drawRect(0, 350f, screenWidth, screenHeight - 350f,
 
                 //This should bring the mines up
@@ -612,7 +599,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                     y = 350 + randy.nextInt(1000);
                     //Log.e("MINES TO LOW", "Y pos CORRECTED: " + y);
                 }
-
                 if(!isLocationOccupied(x,y))
                 {
                     mineList.add(new Mine(x, y));
@@ -639,7 +625,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             float mineY = mineArrayList[i].myY;
             //Mine size
             float mineSize = mineArrayList[i].mySize;
-
 
             //If player is in the bounds of the mine then do
             if(player.myX - player.mySize >= mineX - mineSize *2 &&
@@ -807,5 +792,3 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         }
     }
 }
-
-
