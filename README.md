@@ -36,3 +36,10 @@ My plan is to add in some extra features described below and eventually get my g
 * Add app icons.
 * Come up with a better name :)
 * Everything else I haven't thought of yet.
+* Make size of shapes relative to screen size.
+
+##How to deploy
+
+I used my S5 for testing so anything with a screen size of roughly 1080x1920 will work.
+
+Once you install from Android Studio the name is called "AwesomeGame"
